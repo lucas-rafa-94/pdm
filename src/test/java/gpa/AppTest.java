@@ -35,8 +35,12 @@ public class AppTest {
 //
 //        System.out.println(resultado.substring(resultado.indexOf(":sub>"), resultado.indexOf("</", resultado.indexOf(":sub>")+1)).replace(":sub>",""));
 
-        System.out.println(App.retornaEtiqueta(phdmodule(),pdmmodule(),35));
+        System.out.println(App.retornaEtiqueta(phdmodule(),pdmmodule(),"Descrição do Produto 35"));
+       // System.out.println(truncaStrPara5("atuibuto"));
+        //JSONObject xmlJSONObj = XML.toJSONObject(phdmodule().replace("xmlns=\"\"","").replace("xsi:nil=\"true\"", "")).getJSONObject("env:Envelope").getJSONObject("env:Body").getJSONObject("ns0:findItemResponse").getJSONObject("ns2:result").getJSONObject("ns0:Value").getJSONObject("ns1:ItemEffCategory");
+        //System.out.println(xmlJSONObj.getJSONObject("ns6:GrupoPadariaIndustrializada"));
 
+        //System.out.println(App.retornoValorAtributoComGrupoAtributo("nomePrincipalDoItem", "Cgpi", phdmodule()));
 
     }
 
@@ -57,7 +61,20 @@ public class AppTest {
 
         return resultado;
     }
-
+    public static String truncaStrPara5(String str){
+        String retorno = "";
+        if(str.length() >= 5){
+           for(int i = 2; i <= 5; i++ ){
+               if (!String.valueOf(str.charAt(i)).equals("a") && !String.valueOf(str.charAt(i)).equals("e")
+                       && !String.valueOf(str.charAt(i)).equals("i") && !String.valueOf(str.charAt(i)).equals("o") && !String.valueOf(str.charAt(i)).equals("u")){
+                    retorno = str.substring(0,i+1);
+                    break;
+               }
+               retorno = str.substring(0,i);
+           }
+        }
+        return retorno;
+    }
     public static String phdmodule () throws Exception{
 
         FileReader fileReader = new FileReader("/Users/lucasdossantos/Desktop/xml3.xml");
@@ -75,25 +92,5 @@ public class AppTest {
         return resultado;
     }
 
-    public static String retornaEtiqueta( String pdh, String pdm, int valor){
-        StringBuilder etiqueta = new StringBuilder();
-        JSONObject xmlJSONObj = XML.toJSONObject(pdm);
-        ModuloPdm [] moduloPdm =  new Gson().fromJson(xmlJSONObj.getJSONObject("ModuloPdmCollection").getJSONArray("ModuloPdm").toString().replace("{\"xsi:nil\":true}", "\"\""), ModuloPdm[].class);
 
-        for (int i = 0; i < moduloPdm.length  ; i++){
-
-            if(moduloPdm[i].getMutavel() == 1){
-                etiqueta.append(moduloPdm[i].getDicionario().getAbr20());
-            }else {
-                try {
-                    etiqueta.append(" " + App.retornoValorAtributo(moduloPdm[i].getAtributoPdh(), pdh));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }
-
-        return etiqueta.toString();
-    }
 }

@@ -5,9 +5,9 @@ public class ListaValores {
     private String nomeAtributo;
     private String valorAtributo;
     private String labelAtributo;
-    private int ignorado;
+    private String ignorado;
 
-    public ListaValores(String nomeAtributo, String valorAtributo, String labelAtributo, int ignorado) {
+    public ListaValores(String nomeAtributo, String valorAtributo, String labelAtributo, String ignorado) {
         this.nomeAtributo = nomeAtributo;
         this.valorAtributo = valorAtributo;
         this.labelAtributo = labelAtributo;
@@ -41,11 +41,11 @@ public class ListaValores {
         this.labelAtributo = labelAtributo;
     }
 
-    public int getIgnorado() {
+    public String getIgnorado() {
         return ignorado;
     }
 
-    public void setIgnorado(int ignorado) {
+    public void setIgnorado(String ignorado) {
         this.ignorado = ignorado;
     }
 }

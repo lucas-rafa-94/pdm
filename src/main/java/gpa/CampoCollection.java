@@ -13,13 +13,15 @@ public class CampoCollection {
     private String sufixo;
     private int mutavel;
     private Dicionario dicionario;
-    private ListaValores ListaValores;
+    private ListaValores ListaValor;
+    private IdGrupoAtributo idGrupoAtributo;
     private String etiqueta;
+    private IdTpDescricao idTpDescricao;
     private int trataListaValor;
     private int medidaPrincipal;
     private IdNomeCampoPdh idNomeCampoPdh;
 
-    public CampoCollection(int idCampo, String categoria, String subcategoria, String grupo, String subgrupo, String tpDescricao, int ordemCampo, String prefixo, String sufixo, int mutavel, Dicionario dicionario, gpa.ListaValores listaValores, String etiqueta, int trataListaValor, int medidaPrincipal, IdNomeCampoPdh idNomeCampoPdh) {
+    public CampoCollection(int idCampo, String categoria, String subcategoria, String grupo, String subgrupo, String tpDescricao, int ordemCampo, String prefixo, String sufixo, int mutavel, Dicionario dicionario, ListaValores listaValor, IdGrupoAtributo idGrupoAtributo, String etiqueta, IdTpDescricao idTpDescricao, int trataListaValor, int medidaPrincipal, IdNomeCampoPdh idNomeCampoPdh) {
         this.idCampo = idCampo;
         this.categoria = categoria;
         this.subcategoria = subcategoria;
@@ -31,15 +33,16 @@ public class CampoCollection {
         this.sufixo = sufixo;
         this.mutavel = mutavel;
         this.dicionario = dicionario;
-        ListaValores = listaValores;
+        ListaValor = listaValor;
+        this.idGrupoAtributo = idGrupoAtributo;
         this.etiqueta = etiqueta;
+        this.idTpDescricao = idTpDescricao;
         this.trataListaValor = trataListaValor;
         this.medidaPrincipal = medidaPrincipal;
         this.idNomeCampoPdh = idNomeCampoPdh;
     }
 
-    public CampoCollection() {
-    }
+    public CampoCollection() { }
 
     public int getIdCampo() {
         return idCampo;
@@ -129,12 +132,20 @@ public class CampoCollection {
         this.dicionario = dicionario;
     }
 
-    public gpa.ListaValores getListaValores() {
-        return ListaValores;
+    public ListaValores getListaValor() {
+        return ListaValor;
     }
 
-    public void setListaValores(gpa.ListaValores listaValores) {
-        ListaValores = listaValores;
+    public void setListaValor(ListaValores listaValor) {
+        ListaValor = listaValor;
+    }
+
+    public IdGrupoAtributo getIdGrupoAtributo() {
+        return idGrupoAtributo;
+    }
+
+    public void setIdGrupoAtributo(IdGrupoAtributo idGrupoAtributo) {
+        this.idGrupoAtributo = idGrupoAtributo;
     }
 
     public String getEtiqueta() {
@@ -143,6 +154,14 @@ public class CampoCollection {
 
     public void setEtiqueta(String etiqueta) {
         this.etiqueta = etiqueta;
+    }
+
+    public IdTpDescricao getIdTpDescricao() {
+        return idTpDescricao;
+    }
+
+    public void setIdTpDescricao(IdTpDescricao idTpDescricao) {
+        this.idTpDescricao = idTpDescricao;
     }
 
     public int getTrataListaValor() {
